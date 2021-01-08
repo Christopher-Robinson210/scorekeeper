@@ -1,0 +1,98 @@
+body {
+    background-color: #393939;
+}
+
+main {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.1)), url("../img/background-pixel-small.png");
+}
+
+.header {
+    text-align: center;
+    padding: 0;
+    background-color: white;
+    border-bottom: 1px solid rgba(39, 39, 39, 0.2);
+}
+.navbar {
+    background: white;
+    /*background: url("../img/background-pixel.png");*/
+}
+.main {
+    /*border-top: 1px solid rgba(39, 39, 39, 0.3);*/
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(0,0,0, 0.1)), url("../img/background-pixel-small.png");
+    /*background: url("../img/background-pixel-small.png");*/
+    padding: 0;
+}
+
+.footer {
+    background-color: white;
+    border-top: 1px solid rgba(39, 39, 39, 0.3);
+    text-align: center;
+}
+
+.subfoot{
+    margin: auto;
+}
+
+.customlink {
+    color: black;
+    text-decoration: none;
+}
+
+.customlink:hover {
+    color: red;
+}
+
+.input-group {
+    width: fit-content;
+}
+
+.sk-table {
+    text-align: center;
+    margin: 0.5rem 1rem 0 1rem;
+    
+    padding-bottom: 0.5rem;
+}
+
+table {
+    margin:auto;
+    width: inherit;
+}
+#scoreboard *{
+    border-collapse: collapse;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    width: fit-content;
+    margin: auto;
+}
+
+#scoreboard table {
+    margin: auto;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 430px) {
+    .shadow-none .p-2 .bg-white .rounded .sk-table {
+        width: 100vw;
+        left:0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left:0;
+        margin-right:0;
+    }
+    .container-xxl {
+        width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left:0;
+        margin-right:0;
+    }
+    table {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left:0;
+        margin-right:0;
+        font-size: 0.7rem;
+    }
+}

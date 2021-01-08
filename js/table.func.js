@@ -26,7 +26,7 @@ function createTable(){
 
 function drawTable(){
     let totals = new Array(players.length);
-    header = thead + "<td></td>";
+    header = thead + "<td>Round</td>";
     body = tbody+ "<td>" +round+ "</td>";
     footer = tfoot + "<td></td>";
     table = "";
@@ -91,7 +91,6 @@ function addPlayers(){
         numPlayers = parseInt(prompt("How many players?", ""));
         if (numPlayers > 0)
             doAdd = true;
-        console.log("What is numPlayers? " +typeof numPlayers+ ", " +numPlayers+ "\nDoAdd: " +doAdd);
         }while(doAdd == false);
         var playerList = [];    
         for (i =0; i < numPlayers; i++){
@@ -119,30 +118,31 @@ function defaultPlayers(dadPlaying){
 }
 
 function addScore(data){
-    //row = parseInt(data.getAttribute("data-row"));
+    //get the column attribute from data
     col = parseInt(data.getAttribute("data-col"));
-    //scoretable[row][col] = scoretable[row-1][col] + parseInt(prompt("Score?", ""));
-    if (players[col].slice(-1) != "s"){
-        score = parseInt(prompt(players[col] + "'s score:"));
-        //score = 5;
-        scoreAdded[col] = 1;
-    }
-    else{
-        score = parseInt(prompt(players[col] + "' score:"));   
-        //score = 5;
-        scoreAdded[col] = 1;
-    }
+   
+    //Loop until score given is a number
+    do{
+        if (players[col].slice(-1) != "s"){
+            score = parseInt(prompt(players[col] + "'s score:"));
+        }
+        else{
+            score = parseInt(prompt(players[col] + "' score:"));   
+        }
+    }while(isNaN(score));
+    //set the player to "score added" this round
+    scoreAdded[col] = 1;
+    //prevents error if scoretable has no rows (length of 0)
     if(scoretable.length >= 1)
         scoretable[scoretable.length-1][col] = score;
-
-    //if ((scoreAdded % (players.length+1)) == 0){
+    //check if all players have played and add row as needed
     if (allScoresAdded(scoreAdded) == true){
         addRow();
         clearScoresAdded(scoreAdded);
     }
     drawTable();
 }
-
+//simple function to check that all players have played
 function allScoresAdded(list){
     sum = 0;
     for (i=0; i < list.length;i++)
@@ -159,24 +159,22 @@ function clearScoresAdded(list){
     for (i=0; i < list.length;i++)
         list[i] = 0;
 }
-
+//calculate total score of each player
 function sumCol(){
     y = scoretable.length;
     sum=0;
     
     for (j=0; j<players.length;j++){
         for (i = 0; i < y; i++){
-                    console.log("Type Scoretable: " +typeof parseInt(scoretable[i][j]));
                     if(!(parseInt(scoretable[i][j] == NaN)))
-                        if(!(+typeof parseInt(scoretable[i][j]) == NaN) && !(scoretable[i][j] == ""))
+                        if(!(+typeof parseInt(scoretable[i][j]) == NaN) && !(scoretable[i][j] == ""))   //this if statement may be redundant
                         sum+=parseInt(scoretable[i][j]);
 
         }
        
-        console.log("Type of sum: " +typeof sum);
         sums[j] = sum;
         sum=0;
-        }
+    }
     
 }
 
@@ -187,7 +185,6 @@ function clearScore(){
         scoretable[0][i] = 0;
     }
 
-    console.log("Type of: " +typeof scoretable);
     clearScoresAdded(scoreAdded);
     drawTable();
     // players.forEach(function(){
@@ -214,11 +211,9 @@ clearScore();
 
 function winner(){
     most = parseInt(sums[0]);
-    console.log("Most =" +typeof most);
     temp = 0;
     result = "";
     for (j=1; j<sums.length; j++){
-        console.log("Comparing Sum["+j+"] with Most: " +typeof parseInt(sums[j])+ " " +parseInt(sums[j])+ " vs " +typeof parseInt(most)+ " " +parseInt(most));
         if (parseInt(sums[j]) > parseInt(most)){
             most = parseInt(sums[j]);
             temp = j;

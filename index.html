@@ -10,12 +10,8 @@
     <link href="css/bootstrap/bootstrap-icons.css" rel="stylesheet" >
     <link href="css/style.css" rel="stylesheet" >
 
-    <!-- Javascript -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="js/bootstrap/bootstrap.bundle.min.js" ></script>
-    <script src="js/users.func.js"></script>
-    <script src="js/table.func.js"></script>
-    <script src="js/main.js"></script>
+
+   
     
 </head>
 <body>
@@ -60,12 +56,32 @@
         -->
 </header>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        
+      </div>
+      <div class="modal-footer" id="myModalFooter">
+        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+        <button type="button" class="btn btn-primary" id="myModalButton">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <main class="container-xxl">
     <!-- content here -->
     <div class="container-xxl main">
         <div class="shadow-none p-2 bg-white rounded sk-table">
             <table id="scoreboard">
-              <a href="#" id="newgamelink" onclick="newGame()">Start New Game</a>
+              <a href="#" id="newgamelink" onclick="newGame()">Start New Game</a><br>
+              <a href="#" id="newgamelink" onclick="modalInputNumPlayers.toggle()">Test modalInputNumPlayers</a>
             </table>
             <a href="#" id="endgamelink" onclick="endGame()" hidden="true">End Game</a>
         </div>
@@ -80,7 +96,12 @@
 </footer>
     
     <!-- Javascript -->
-        <!-- Bootstrap -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="js/bootstrap/bootstrap.js" ></script>
+    <script src="js/modal.class.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/users.func.js"></script>
+    <script src="js/table.func.js"></script>
     
 </body>
 </html>

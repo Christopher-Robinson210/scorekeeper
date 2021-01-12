@@ -9,6 +9,7 @@ var thead = '<thead><tr style= "font-weight: bold" >';
 var tbody ='<tbody><tr style= "font-weight: normal">';
 var tfoot = '<tfoot><tr style="font-weight: normal">';
 
+
 function createTable(){
     // @Todo
     var x = 0;
